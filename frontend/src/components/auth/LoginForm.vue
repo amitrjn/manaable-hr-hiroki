@@ -33,7 +33,7 @@
         </button>
       </div>
       <div class="text-sm" v-if="!magicLinkMode">
-        <router-link to="/forgot-password" class="font-medium text-indigo-600 hover:text-indigo-500">
+        <router-link to="/reset-password" class="font-medium text-indigo-600 hover:text-indigo-500">
           Forgot password?
         </router-link>
       </div>

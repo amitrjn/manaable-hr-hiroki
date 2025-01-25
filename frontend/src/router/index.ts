@@ -34,6 +34,11 @@ const router = createRouter({
       component: () => import('@/views/DashboardView.vue'),
       beforeEnter: requireAuth,
     },
+    {
+      path: '/auth/callback',
+      name: 'authCallback',
+      component: () => import('@/views/auth/CallbackView.vue'),
+    },
   ],
 })
 

@@ -41,12 +41,18 @@ export default defineConfig(({ mode }) => {
     base: '/',
     build: {
       outDir: 'dist',
+      sourcemap: false, // Disable sourcemaps in production
       rollupOptions: {
         output: {
           manualChunks: {
-            'vendor': ['vue', '@vue/runtime-core', 'vue-router', 'pinia']
+            'vendor': ['vue', '@vue/runtime-core', 'vue-router', 'pinia'],
+            'supabase': ['@supabase/supabase-js']
           }
         }
+      },
+      // Optimize deps to reduce cold start time
+      optimizeDeps: {
+        include: ['vue', 'vue-router', 'pinia', '@supabase/supabase-js']
       }
     }
   }

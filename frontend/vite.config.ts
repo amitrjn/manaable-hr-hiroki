@@ -27,5 +27,11 @@ export default defineConfig(({ mode }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       },
     },
+    server: {
+      host: true,
+      allowedHosts: [
+        'access-repo-app-tunnel-qgcdmuib.devinapps.com'
+      ]
+    }
   }
 })

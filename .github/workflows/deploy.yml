@@ -48,3 +48,9 @@ jobs:
           working-directory: frontend
           alias-domains: |
             leave-management.vercel.app
+          production: ${{ github.ref == 'refs/heads/main' }}  # Only deploy to production from main branch
+          github-comment: false  # Disable GitHub comments to keep PR clean
+        env:
+          NODE_ENV: production
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}

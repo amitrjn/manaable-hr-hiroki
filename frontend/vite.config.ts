@@ -30,7 +30,8 @@ export default defineConfig(({ mode }) => {
     server: {
       host: true,
       allowedHosts: [
-        'access-repo-app-tunnel-qgcdmuib.devinapps.com'
+        'access-repo-app-tunnel-qgcdmuib.devinapps.com',
+        'access-repo-app-tunnel-sej5mrdp.devinapps.com'
       ]
     },
     base: '/',

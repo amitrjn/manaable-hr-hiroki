@@ -8,10 +8,7 @@ export function useAuth() {
   return {
     isAuthenticated,
     currentUser,
-    login: store.login,
-    register: store.register,
-    logout: store.logout,
-    resetPassword: store.resetPassword,
-    updatePassword: store.updatePassword
+    loginWithProvider: store.loginWithProvider,
+    logout: store.logout
   }
 }

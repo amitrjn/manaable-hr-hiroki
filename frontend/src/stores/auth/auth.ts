@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { AuthState, User, LoginCredentials, RegisterData } from '@/types/auth'
+import type { AuthState } from '@/types/auth'
 import { supabase } from '@/lib/supabase'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -51,17 +51,8 @@ export const useAuthStore = defineStore('auth', () => {
     state.value.loading = false
   }
 
-  async function login({ email, password }: LoginCredentials) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    })
-    
-    if (error) throw error
-    return data
-  }
-
-  async function loginWithProvider(provider: 'google' | 'github') {
+  // Only GitHub SSO is supported
+  async function loginWithProvider(provider: 'github') {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
@@ -73,45 +64,6 @@ export const useAuthStore = defineStore('auth', () => {
     return data
   }
 
-  async function loginWithMagicLink(email: string) {
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`
-      }
-    })
-    
-    if (error) throw error
-  }
-
-  async function register({ email, password, name }: RegisterData) {
-    const { data: authData, error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { name }
-      }
-    })
-    
-    if (authError) throw authError
-
-    if (authData.user) {
-      // Create user profile
-      const { error: profileError } = await supabase
-        .from('users')
-        .insert({
-          id: authData.user.id,
-          email,
-          name,
-          role: 'Member'
-        })
-
-      if (profileError) throw profileError
-    }
-
-    return authData
-  }
-
   async function logout() {
     const { error } = await supabase.auth.signOut()
     if (error) throw error
@@ -120,31 +72,12 @@ export const useAuthStore = defineStore('auth', () => {
     state.value.session = null
   }
 
-  async function resetPassword(email: string) {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`
-    })
-    
-    if (error) throw error
-  }
-
-  async function updatePassword(password: string) {
-    const { error } = await supabase.auth.updateUser({
-      password
-    })
-    
-    if (error) throw error
-  }
-
   return {
     state,
     isAuthenticated,
     currentUser,
     init,
-    login,
-    register,
-    logout,
-    resetPassword,
-    updatePassword
+    loginWithProvider,
+    logout
   }
 })

@@ -17,18 +17,6 @@ const router = createRouter({
       beforeEnter: requireGuest,
     },
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('@/views/auth/RegisterView.vue'),
-      beforeEnter: requireGuest,
-    },
-    {
-      path: '/reset-password',
-      name: 'resetPassword',
-      component: () => import('@/views/auth/ResetPasswordView.vue'),
-      beforeEnter: requireGuest,
-    },
-    {
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('@/views/DashboardView.vue'),

@@ -8,15 +8,8 @@ export interface User {
 
 export interface AuthState {
   user: User | null
-  session: any | null
+  session: { user: { id: string } } | null
   loading: boolean
 }
 
-export interface LoginCredentials {
-  email: string
-  password: string
-}
-
-export interface RegisterData extends LoginCredentials {
-  name: string
-}
+// No longer needed as we only use GitHub SSO

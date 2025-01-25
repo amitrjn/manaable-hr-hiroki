@@ -61,10 +61,36 @@ export const useAuthStore = defineStore('auth', () => {
     return data
   }
 
+  async function loginWithProvider(provider: 'google' | 'github') {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`
+      }
+    })
+    
+    if (error) throw error
+    return data
+  }
+
+  async function loginWithMagicLink(email: string) {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`
+      }
+    })
+    
+    if (error) throw error
+  }
+
   async function register({ email, password, name }: RegisterData) {
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
-      password
+      password,
+      options: {
+        data: { name }
+      }
     })
     
     if (authError) throw authError

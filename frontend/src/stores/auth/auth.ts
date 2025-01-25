@@ -51,10 +51,10 @@ export const useAuthStore = defineStore('auth', () => {
     state.value.loading = false
   }
 
-  // Only Google SSO is supported
-  async function loginWithGoogle() {
+  // Only GitHub SSO is supported
+  async function loginWithProvider(provider: 'github') {
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
+      provider,
       options: {
         redirectTo: `${window.location.origin}/auth/callback`
       }
@@ -77,7 +77,7 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated,
     currentUser,
     init,
-    loginWithGoogle,
+    loginWithProvider,
     logout
   }
 })

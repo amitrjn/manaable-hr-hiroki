@@ -12,5 +12,4 @@ export interface AuthState {
   loading: boolean
 }
 
-// Only Google SSO authentication is supported
-// Note: No additional auth types needed as we use Google OAuth exclusively
+// No longer needed as we only use GitHub SSO

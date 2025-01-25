@@ -32,6 +32,11 @@ const router = createRouter({
       component: () => import('@/views/admin/UserManagementView.vue'),
       beforeEnter: requireAdmin,
     },
+    // Remove registration and password reset routes since we only use Google SSO
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/login'
+    }
   ],
 })
 

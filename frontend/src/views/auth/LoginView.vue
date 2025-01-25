@@ -11,7 +11,7 @@
       </div>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome Back</h2>
       <p class="mt-2 text-center text-sm text-gray-600">
-        Sign in to manage your leave requests
+        Sign in with your Google account to manage leave requests
       </p>
     </div>
 

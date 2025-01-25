@@ -41,5 +41,5 @@
     "vite-plugin-vue-devtools": "^7.7.0",
     "vue-tsc": "^2.2.0"
   },
-  "homepage": "https://amitrjn.github.io/manaable-hr-hiroki"
+  "homepage": "https://leave-management.vercel.app"
 }

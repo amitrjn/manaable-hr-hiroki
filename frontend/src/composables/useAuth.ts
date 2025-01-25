@@ -8,7 +8,7 @@ export function useAuth() {
   return {
     isAuthenticated,
     currentUser,
-    loginWithProvider: store.loginWithProvider,
+    loginWithGoogle: store.loginWithGoogle,
     logout: store.logout
   }
 }

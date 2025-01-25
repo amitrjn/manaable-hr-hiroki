@@ -9,6 +9,7 @@ export async function requireAuth(
   const authStore = useAuthStore()
   
   if (!authStore.isAuthenticated) {
+    // Redirect to login with return URL for Google OAuth flow
     next({ name: 'login', query: { redirect: to.fullPath } })
     return
   }

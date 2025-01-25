@@ -17,14 +17,19 @@ function validateSupabaseConfig() {
     errors.push('VITE_SUPABASE_ANON_KEY appears to be invalid (should be a JWT token)')
   }
 
-  console.log('[Supabase Config]', {
-    url: supabaseUrl,
-    hasUrl: !!supabaseUrl,
-    urlLength: supabaseUrl?.length,
-    hasAnonKey: !!supabaseAnonKey,
-    keyLength: supabaseAnonKey?.length,
-    validationErrors: errors
-  })
+  // Only log configuration details in development
+  if (import.meta.env.DEV) {
+    console.log('[Supabase Config]', {
+      url: supabaseUrl,
+      hasUrl: !!supabaseUrl,
+      urlLength: supabaseUrl?.length,
+      hasAnonKey: !!supabaseAnonKey,
+      keyLength: supabaseAnonKey?.length,
+      validationErrors: errors
+    })
+  } else {
+    console.log('[Supabase] Initialized with production configuration')
+  }
 
   return { supabaseUrl, supabaseAnonKey, errors }
 }

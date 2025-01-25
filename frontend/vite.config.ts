@@ -32,6 +32,17 @@ export default defineConfig(({ mode }) => {
       allowedHosts: [
         'access-repo-app-tunnel-qgcdmuib.devinapps.com'
       ]
+    },
+    base: '/',
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor': ['vue', '@vue/runtime-core', 'vue-router', 'pinia']
+          }
+        }
+      }
     }
   }
 })

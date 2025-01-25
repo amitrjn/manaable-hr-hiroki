@@ -32,6 +32,11 @@ const router = createRouter({
       component: () => import('@/views/admin/UserManagementView.vue'),
       beforeEnter: requireAdmin,
     },
+    // Catch-all route for 404
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/login'
+    }
   ],
 })
 

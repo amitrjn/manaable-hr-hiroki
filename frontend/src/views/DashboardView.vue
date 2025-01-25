@@ -4,12 +4,21 @@
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
           <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <button
-            @click="handleLogout"
-            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-          >
-            Sign out
-          </button>
+          <div class="flex items-center space-x-4">
+            <router-link
+              v-if="user?.role === 'Admin'"
+              to="/admin/users"
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
+            >
+              Manage Users
+            </router-link>
+            <button
+              @click="handleLogout"
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              Sign out
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -20,6 +29,7 @@
           <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
             <div class="p-4">
               <h2 class="text-lg font-semibold">Welcome, {{ user?.name }}</h2>
+              <p class="mt-2 text-sm text-gray-600">Role: {{ user?.role }}</p>
             </div>
           </div>
         </div>

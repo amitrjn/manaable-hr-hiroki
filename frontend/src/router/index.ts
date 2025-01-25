@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { requireAuth, requireGuest } from './guards'
+import { requireAuth, requireGuest, requireAdmin } from './guards'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -26,6 +26,12 @@ const router = createRouter({
       path: '/auth/callback',
       name: 'authCallback',
       component: () => import('@/views/auth/CallbackView.vue'),
+    },
+    {
+      path: '/admin/users',
+      name: 'userManagement',
+      component: () => import('@/views/admin/UserManagementView.vue'),
+      beforeEnter: requireAdmin,
     },
   ],
 })

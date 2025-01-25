@@ -32,7 +32,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     recommended IDE setup is
     <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a>
     +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
+    <a href="https://volar.vuejs.org/" target="_blank" rel="noopener">Volar</a>. If
     you need to test your components and web pages, check out
     <a href="https://vitest.dev/" target="_blank" rel="noopener">Vite</a>
     and
@@ -57,9 +57,9 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
     <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
     <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
+    <a href="https://devtools.vuejs.org/" target="_blank" rel="noopener">Vue Dev Tools</a>. If
     you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
+    <a href="https://awesome-vue.js.org/" target="_blank" rel="noopener">Awesome Vue</a>
     a visit.
   </WelcomeItem>
 

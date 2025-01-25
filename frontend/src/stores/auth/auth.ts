@@ -53,14 +53,24 @@ export const useAuthStore = defineStore('auth', () => {
 
   // Only Google SSO is supported
   async function loginWithGoogle() {
+    console.log('Initiating Google OAuth flow...')
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`
+        redirectTo: `${window.location.origin}/auth/callback`,
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent'
+        }
       }
     })
     
-    if (error) throw error
+    if (error) {
+      console.error('Google OAuth error:', error)
+      throw error
+    }
+    
+    console.log('Google OAuth initiated successfully')
     return data
   }
 

@@ -36,12 +36,13 @@ if (errors.length > 0) {
   throw new Error('Supabase configuration error: ' + errors.join(', '))
 }
 
-// Initialize Supabase client with debug options
+// Initialize Supabase client with Google OAuth configuration
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: true,
-    flowType: 'pkce'
+    flowType: 'pkce',
+    providers: ['google']
   }
 })

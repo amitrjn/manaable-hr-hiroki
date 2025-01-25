@@ -41,5 +41,8 @@
     "vite-plugin-vue-devtools": "^7.7.0",
     "vue-tsc": "^2.2.0"
   },
-  "homepage": "https://leave-management.vercel.app"
+  "homepage": "https://leave-management.vercel.app",
+  "engines": {
+    "node": ">=20.0.0"
+  }
 }

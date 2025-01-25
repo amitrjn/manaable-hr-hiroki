@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { User } from '@/types/auth'
 import { supabase } from '@/lib/supabase'
+import { useAuthStore } from '@/stores/auth/auth'
 
 export const useUserStore = defineStore('user', () => {
   const users = ref<User[]>([])

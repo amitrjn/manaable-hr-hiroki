@@ -227,8 +227,9 @@ CREATE POLICY "Users can update their own notifications" ON public.notifications
 ## 6. Security Requirements
 
 ### 6.1 Authentication (Supabase Auth)
-- Multiple auth providers support (Email, Google, GitHub)
-- Secure password storage (handled by Supabase)
+- Google OAuth authentication with PKCE flow
+- Secure session management (handled by Supabase)
+- Role-based access control (Member/Manager/Admin)
 - JWT-based authentication
 - Token expiration and refresh mechanism
 - Magic link authentication option
